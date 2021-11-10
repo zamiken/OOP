@@ -4,56 +4,19 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
-class Tc implements Comparable {
-    int x;
+public class PhanTu <T extends java.lang.Comparable<T>>{
 
-    public Tc() {
-        
-    }
-
-    /**
-     * Construction.
-     * @param x Integer
-     */
-    public Tc(int x) {
-        this.x = x;
-    }
-
-    public int Getx() {
-        return x;
-    }
-
-    public boolean isGreaterThan(Tc a) {
-        return x > a.Getx();
-    }
-
-    public boolean isSmallerThan(Tc a) {
-        return x < a.Getx();
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        if (o instanceof Tc) {
-            if(isGreaterThan((Tc) o)) {
-                return 1;
-            } else if(isSmallerThan((Tc) o)) {
-                return -1;
-            }
-            return 0;
-        }
-        return 0;
-    }
-}
-
-public class PhanTu implements java.lang.Comparable<T>{
-
-    public ArrayList<T> arr;
+    private ArrayList<T> arr = new ArrayList<T>();
+    private T x;
 
     public void add(T x) {
         arr.add(x);
+    }
+
+    public boolean isGreaterThan(T a) {
+        return (x.compareTo(a) > 0);
     }
 
     public void sort() {
@@ -61,7 +24,7 @@ public class PhanTu implements java.lang.Comparable<T>{
     }
 
     public void print() throws FileNotFoundException, UnsupportedEncodingException {
-        PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
+        PrintWriter writer = new PrintWriter("src/output.txt", "UTF-8");
         for(int i = 0; i < arr.size(); ++i) {
             writer.print(arr.get(i) + " ");
         }
@@ -69,23 +32,15 @@ public class PhanTu implements java.lang.Comparable<T>{
     }
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-        File file = new File("input.txt");
-        
+        File file = new File("src/input.txt");
         Scanner in = new Scanner(file);
         PhanTu sol = new PhanTu();
         while(in.hasNext()) {
-            int x = in.nextInt();
-            Tc neww = new Tc(x);
+            Integer x = in.nextInt();
             sol.add(x);
         }
         sol.sort();
         sol.print();
         in.close();
-    }
-
-    @Override
-    public int compareTo(T o) {
-        // TODO Auto-generated method stub
-        return 0;
     }
 }
