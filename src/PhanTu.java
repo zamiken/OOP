@@ -34,7 +34,7 @@ public class PhanTu <T extends java.lang.Comparable<T>>{
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         File file = new File("src/input.txt");
         Scanner in = new Scanner(file);
-        PhanTu sol = new PhanTu();
+        PhanTu<Integer> sol = new PhanTu();
         while(in.hasNext()) {
             Integer x = in.nextInt();
             sol.add(x);
